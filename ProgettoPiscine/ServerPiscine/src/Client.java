@@ -27,10 +27,10 @@ public class Client implements Runnable {
 
             while (true) {
                 String str = in.readLine();
-                if (str.equals("END")) {
+                if (str.equals(END)) {
                     System.out.println("Client disconnesso: " + clientSocket);
                     break;
-                } else if (str.equals("STOP")) {
+                } else if (str.equals(EXIT)) {
                     System.out.println("Ricevuto EXIT: chiusura del server...");
                     out.close();
                     in.close();
