@@ -32,6 +32,25 @@ public class Main {
     private static void gestisciCliente(Socket clientSocket, GestioneServer gestioneServer) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+            out.println("Benvenuto nel server delle piscine!");
+            out.println("Comandi disponibili:");
+            out.println("- SELEZIONA-COMUNE");
+            out.println("- SELEZIONA-PROVINCIA");
+            out.println("- SELEZIONA-REGIONE");
+            out.println("- SELEZIONA-NOME");
+            out.println("- SELEZIONA-ANNO");
+            out.println("- SELEZIONA-ANNOMAGGIORE");
+            out.println("- SELEZIONA-ANNOMINORE");
+            out.println("- SELEZIONA-DATA");
+            out.println("- SELEZIONA-MAP");
+            out.println("- SELEZIONA-LONGITUDINE");
+            out.println("- SELEZIONA-LATITUDINE");
+            out.println("- NUMERO-TOT");
+            out.println("- EXIT");
+            out.println("Digita un comando e premi INVIO.");
+            out.println("Benvenuto nel server delle piscine!");
+            out.println("Digita un comando e premi INVIO.");
+            out.println("FINE_RISPOSTA");
 
             while (true) {
                 String comando = in.readLine();
@@ -40,13 +59,18 @@ public class Main {
                     break;
                 }
 
+                // Chiedere il parametro se necessario
+                if (!comando.equalsIgnoreCase("NUMERO-TOT")) {
+                    out.println("Inserisci il parametro richiesto:");
+                }
+
                 String parametro = in.readLine();
                 String risposta = gestioneServer.gestisciRichiesta(comando, parametro);
 
                 for (String linea : risposta.split("\n")) {
                     out.println(linea);
                 }
-                out.println("FINE_RISPOSTA"); // Token esplicito per indicare la fine della risposta
+                out.println("FINE_RISPOSTA");  // Segnale di fine risposta
             }
         } catch (IOException e) {
             System.err.println("Errore nella gestione del client.");
