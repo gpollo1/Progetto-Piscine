@@ -2,14 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class CSVLettore {
-    //ho deciso di utilizzare per la memorizzazione delle piscine una hash map con la chiave il comune e all'interno una lista di oggetti piscine
-    public static Map<String, ArrayList<Piscina>> caricaPiscine(String percorso) throws IOException {
-        Map<String, ArrayList<Piscina>> mappaPiscine = new HashMap<>();
+    public static ArrayList<Piscina> caricaPiscine(String percorso) throws IOException {
+        ArrayList<Piscina> piscine = new ArrayList<>();
         BufferedReader lettore = new BufferedReader(new FileReader(percorso));
         String linea;
 
@@ -32,14 +28,10 @@ public class CSVLettore {
                     Double.parseDouble(campi[8])   // Latitudine
             );
 
-            // Aggiungi la piscina alla mappa sotto il Comune
-            if (!mappaPiscine.containsKey(campi[0])) {
-                mappaPiscine.put(campi[0], new ArrayList<>());
-            }
-            mappaPiscine.get(campi[0]).add(piscina);
+            piscine.add(piscina);
         }
 
         lettore.close();
-        return mappaPiscine;
+        return piscine;
     }
 }

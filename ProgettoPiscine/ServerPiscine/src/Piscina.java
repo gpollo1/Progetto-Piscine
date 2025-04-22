@@ -33,4 +33,29 @@ public class Piscina {
     public String getIdOSM() { return idOSM; }
     public double getLongitudine() { return longitudine; }
     public double getLatitudine() { return latitudine; }
+
+    @Override
+    public String toString() {
+        return "Comune: " + comune +
+                ", Provincia: " + provincia +
+                ", Regione: " + regione +
+                ", Nome: " + nome +
+                ", Anno Inserimento: " + annoInserimento +
+                ", Data/Ora: " + dataOraInserimento +
+                ", ID OSM: " + idOSM +
+                ", Longitudine: " + longitudine +
+                ", Latitudine: " + latitudine;
+    }
+
+    public String stampaCompatta() {
+        return comune + ";" +
+                provincia + ";" +
+                regione + ";" +
+                nome + ";" +
+                annoInserimento + ";" +
+                dataOraInserimento + ";" +
+                idOSM + ";" +
+                longitudine + ";" +
+                latitudine;
+    }
 }
