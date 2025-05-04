@@ -2,7 +2,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+ * Classe per la lettura di un file CSV contenente informazioni sulle piscine.
+ *
+ * Legge il file e crea una lista di oggetti `Piscina` con i dati letti.
+ */
 public class CSVLettore {
     public static ArrayList<Piscina> caricaPiscine(String percorso) throws IOException {
         ArrayList<Piscina> piscine = new ArrayList<>();

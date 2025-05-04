@@ -1,3 +1,10 @@
+/**
+ * Rappresenta una piscina con le sue informazioni.
+ *
+ * La classe contiene attributi relativi alla piscina come il comune, la provincia,
+ * la regione, il nome, l'anno di inserimento, l'ID OSM, la data/ora di inserimento,
+ * e le coordinate geografiche (longitudine e latitudine).
+ */
 public class Piscina {
     private String comune;
     private String provincia;

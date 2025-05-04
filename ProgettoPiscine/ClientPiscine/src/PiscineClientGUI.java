@@ -3,7 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.Socket;
-
+/**
+ * Interfaccia grafica del client che permette di inviare comandi al server
+ * e visualizzare i risultati.
+ *
+ * La GUI contiene un menu a tendina per selezionare i comandi, un campo di testo
+ * per inserire parametri e un'area di testo per visualizzare le risposte.
+ */
 public class PiscineClientGUI extends JFrame {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1050;
@@ -67,7 +73,10 @@ public class PiscineClientGUI extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
 
         inviaButton.addActionListener(e -> inviaComando());
-        esciButton.addActionListener(e -> chiudiConnessione());
+        esciButton.addActionListener(e -> {
+            comandoBox.setSelectedItem("EXIT");
+            inviaComando();
+        });
 
         connettiAlServer();
     }

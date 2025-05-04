@@ -3,7 +3,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe principale per l'avvio del server.
+ *
+ * Legge i dati dal file CSV delle piscine, li carica in una struttura dati (ArrayList),
+ * apre una socket in ascolto su una porta specifica, riceve richieste dai client,
+ * le elabora tramite la classe GestioneServer e restituisce le risposte.
+ */
 public class Main {
     public static final int PORT = 1050;
 

@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Gestisce le richieste del server in base ai comandi ricevuti dai client.
+ *
+ * Analizza i comandi, interroga la lista di piscine e restituisce una risposta formattata.
+ */
 public class GestioneServer {
     private ArrayList<Piscina> piscine;
 
