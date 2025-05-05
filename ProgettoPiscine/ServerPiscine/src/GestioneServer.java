@@ -12,6 +12,13 @@ public class GestioneServer {
         this.piscine = piscine;
     }
 
+    /**
+     * Elabora il comando ricevuto dal client e restituisce la risposta.
+     *
+     * @param comando comando richiesto (es. SELEZIONA-COMUNE).
+     * @param parametro parametro associato al comando.
+     * @return risposta formattata da inviare al client.
+     */
     public String gestisciRichiesta(String comando, String parametro) {
         switch (comando.toUpperCase()) {
             case "SELEZIONA-COMUNE":
@@ -46,53 +53,23 @@ public class GestioneServer {
     }
 
     private String selezionaComune(String comune) {
-        List<Piscina> risultato = new ArrayList<>();
-        for (Piscina piscina : piscine) {
-            if (piscina.getComune().equalsIgnoreCase(comune)) {
-                risultato.add(piscina);
-            }
-        }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        return filtraPiscine(p -> p.getComune().equalsIgnoreCase(comune));
     }
 
     private String selezionaProvincia(String provincia) {
-        List<Piscina> risultato = new ArrayList<>();
-        for (Piscina piscina : piscine) {
-            if (piscina.getProvincia().equalsIgnoreCase(provincia)) {
-                risultato.add(piscina);
-            }
-        }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        return filtraPiscine(p -> p.getProvincia().equalsIgnoreCase(provincia));
     }
 
     private String selezionaRegione(String regione) {
-        List<Piscina> risultato = new ArrayList<>();
-        for (Piscina piscina : piscine) {
-            if (piscina.getRegione().equalsIgnoreCase(regione)) {
-                risultato.add(piscina);
-            }
-        }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        return filtraPiscine(p -> p.getRegione().equalsIgnoreCase(regione));
     }
 
     private String selezionaNome(String nome) {
-        List<Piscina> risultato = new ArrayList<>();
-        for (Piscina piscina : piscine) {
-            if (piscina.getNome().equalsIgnoreCase(nome)) {
-                risultato.add(piscina);
-            }
-        }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        return filtraPiscine(p -> p.getNome().equalsIgnoreCase(nome));
     }
 
     private String selezionaAnno(int anno) {
-        List<Piscina> risultato = new ArrayList<>();
-        for (Piscina piscina : piscine) {
-            if (piscina.getAnnoInserimento() == anno) {
-                risultato.add(piscina);
-            }
-        }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        return filtraPiscine(p -> p.getAnnoInserimento() == anno);
     }
 
     private String selezionaAnnoMaggiore(int anno) {
@@ -119,6 +96,7 @@ public class GestioneServer {
         return filtraPiscine(p -> p.getLatitudine() == latitudine);
     }
 
+    //è un filtro prende una piscina e resituisce true o false
     private String filtraPiscine(java.util.function.Predicate<Piscina> criterio) {
         List<Piscina> risultato = new ArrayList<>();
         for (Piscina piscina : piscine) {
@@ -126,7 +104,11 @@ public class GestioneServer {
                 risultato.add(piscina);
             }
         }
-        return risultato.isEmpty() ? "Nessuna piscina trovata." : formattaLista(risultato);
+        if (risultato.isEmpty()) {
+            return "Nessuna piscina trovata.";
+        } else {
+            return formattaLista(risultato);
+        }
     }
 
     public int contaPiscine() {

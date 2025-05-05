@@ -7,10 +7,14 @@ import javax.swing.*;
  * Crea un'interfaccia utente che permette di selezionare comandi,
  * inviarli al server tramite socket, ricevere risposte e mostrarle all'utente.
  */
-public class Main {
-    public static final String SERVER_ADDRESS = "localhost";
+public class MainClient {
+    public static final String SERVER_ADDRESS = "127.0.0.1";
     public static final int SERVER_PORT = 1050;
-
+    /**
+     * Metodo principale. Avvia l'interfaccia grafica del client.
+     *
+     * @param args argomenti da linea di comando (non utilizzati)
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             PiscineClientGUI client = new PiscineClientGUI();

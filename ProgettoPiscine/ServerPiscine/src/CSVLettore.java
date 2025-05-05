@@ -8,6 +8,13 @@ import java.util.ArrayList;
  * Legge il file e crea una lista di oggetti `Piscina` con i dati letti.
  */
 public class CSVLettore {
+    /**
+     * Carica le piscine da un file CSV delimitato da punto e virgola.
+     *
+     * @param percorso percorso al file CSV.
+     * @return lista di oggetti Piscina.
+     * @throws IOException se si verifica un errore nella lettura del file.
+     */
     public static ArrayList<Piscina> caricaPiscine(String percorso) throws IOException {
         ArrayList<Piscina> piscine = new ArrayList<>();
         BufferedReader lettore = new BufferedReader(new FileReader(percorso));

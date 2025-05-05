@@ -11,7 +11,7 @@ import java.net.Socket;
  * per inserire parametri e un'area di testo per visualizzare le risposte.
  */
 public class PiscineClientGUI extends JFrame {
-    private static final String SERVER_ADDRESS = "localhost";
+    private static final String SERVER_ADDRESS = "localhost"; //uguale a scrivere 127.0.0.1
     private static final int SERVER_PORT = 1050;
 
     private JComboBox<String> comandoBox;
@@ -23,6 +23,9 @@ public class PiscineClientGUI extends JFrame {
     private BufferedReader in;
     private PrintWriter out;
 
+    /**
+     * Costruttore. Inizializza la finestra, i componenti della GUI e avvia la connessione al server.
+     */
     public PiscineClientGUI() {
         setTitle("Client Piscine Italia");
         setSize(700, 500);
@@ -81,6 +84,10 @@ public class PiscineClientGUI extends JFrame {
         connettiAlServer();
     }
 
+    /**
+     * Stabilisce la connessione al server remoto usando socket TCP.
+     * Alla connessione, riceve il messaggio iniziale del server.
+     */
     private void connettiAlServer() {
         try {
             socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
@@ -96,6 +103,10 @@ public class PiscineClientGUI extends JFrame {
         }
     }
 
+    /**
+     * Invia il comando selezionato e l'eventuale parametro al server,
+     * quindi legge e visualizza la risposta.
+     */
     private void inviaComando() {
         String comando = comandoBox.getSelectedItem().toString();
         String parametro = parametroField.getText().trim();
@@ -125,6 +136,9 @@ public class PiscineClientGUI extends JFrame {
         }
     }
 
+    /**
+     * Chiude la connessione con il server.
+     */
     private void chiudiConnessione() {
         try {
             if (socket != null) socket.close();

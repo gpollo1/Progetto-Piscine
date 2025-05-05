@@ -10,7 +10,7 @@ import java.util.List;
  * apre una socket in ascolto su una porta specifica, riceve richieste dai client,
  * le elabora tramite la classe GestioneServer e restituisce le risposte.
  */
-public class Main {
+public class MainServer {
     public static final int PORT = 1050;
 
     public static void main(String[] args) {
@@ -35,6 +35,12 @@ public class Main {
         }
     }
 
+    /**
+     * Gestisce la comunicazione con un singolo client.
+     *
+     * @param clientSocket socket della connessione col client.
+     * @param gestioneServer oggetto contenente la logica per l'elaborazione dei comandi.
+     */
     private static void gestisciCliente(Socket clientSocket, GestioneServer gestioneServer) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
