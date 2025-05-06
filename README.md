@@ -17,7 +17,7 @@ All'interno della cartella ProgettoPiscine è presente una relazione che descriv
 - I comandi che possono essere utilizzati.
 - Una breve spiegazione del codice.
 
-## Utilizzo
+## Utilizzo:
 Avvia il Server e successivamente il Client.
 
 # Autore:
