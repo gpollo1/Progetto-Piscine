@@ -28,7 +28,7 @@ public class PiscineClientGUI extends JFrame {
      */
     public PiscineClientGUI() {
         setTitle("Client Piscine Italia");
-        setSize(700, 500);
+        setSize(1000, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
